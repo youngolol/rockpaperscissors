@@ -15,23 +15,32 @@ if (randomNum === 3){
 } else if (randomNum === 1){
     console.log('scissors')
     return 1;
-} else {
-    console.log('handsome')
-    return "handsome";
 }
 }
 
 const playerSelection = window.prompt('choice: ').toLowerCase();
 
 function playRound(playerSelection, computerSelection) {
-if (computerSelection === 3){
+if (computerSelection === 3 && playerSelection === 'rock'){
     return "tie";
-} else if (computerSelection === 2){
+} else if (computerSelection === 2 && playerSelection === 'rock'){
     return "computer";
-} else if (computerSelection === 1){
+} else if (computerSelection === 1 && playerSelection === 'rock'){
     return "player";
+} else if (computerSelection === 3 && playerSelection === 'paper'){
+    return "player";
+} else if (computerSelection === 2 && playerSelection === 'paper'){
+    return "tie";
+} else if (computerSelection === 1 && playerSelection === 'paper'){
+    return "computer";
+} else if (computerSelection === 3 && playerSelection === 'scissors'){
+    return "computer";
+} else if (computerSelection === 2 && playerSelection === 'scissors'){
+    return "player";
+} else if (computerSelection === 1 && playerSelection === 'scissors'){
+    return "tie";
 }
-} 
+}
 
 // console.log(playRound(playerSelection, computerSelection));
 

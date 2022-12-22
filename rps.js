@@ -7,38 +7,37 @@ function numberGenerator(max) {
 function getComputerChoice() {
 let randomNum = numberGenerator(3)
 if (randomNum === 3){
-    console.log('rock')
-    return 3;
+    return "rock";
 } else if (randomNum === 2){
-    console.log('paper')
-    return 2;
+    return "paper";
 } else if (randomNum === 1){
-    console.log('scissors')
-    return 1;
+    return "scissors";
 }
 }
 
 const playerSelection = window.prompt('choice: ').toLowerCase();
 
 function playRound(playerSelection, computerSelection) {
-if (computerSelection === 3 && playerSelection === 'rock'){
+if (computerSelection === playerSelection){
     return "tie";
-} else if (computerSelection === 2 && playerSelection === 'rock'){
-    return "computer";
-} else if (computerSelection === 1 && playerSelection === 'rock'){
-    return "player";
-} else if (computerSelection === 3 && playerSelection === 'paper'){
-    return "player";
-} else if (computerSelection === 2 && playerSelection === 'paper'){
-    return "tie";
-} else if (computerSelection === 1 && playerSelection === 'paper'){
-    return "computer";
-} else if (computerSelection === 3 && playerSelection === 'scissors'){
-    return "computer";
-} else if (computerSelection === 2 && playerSelection === 'scissors'){
-    return "player";
-} else if (computerSelection === 1 && playerSelection === 'scissors'){
-    return "tie";
+} else if (playerSelection === 'rock'){
+    if (computerSelection === 'paper') {
+      return "computer";
+    } else {
+      return "player";
+    }
+} else if (playerSelection === 'paper'){
+    if (computerSelection === 'rock') {
+      return "player";
+    } else {
+      return "computer";
+    }
+} else if (playerSelection === 'scissors'){
+    if (computerSelection === 'rock') {
+      return "computer";
+    } else {
+      return "player";
+    }
 }
 }
 
@@ -46,12 +45,24 @@ if (computerSelection === 3 && playerSelection === 'rock'){
 
 
 function game(playRound){
-let results = []
+let oneWinner = {};
 for (let i = 0 ; i < 5; i++){
     let computerSelection = getComputerChoice();
-    results.push(playRound(playerSelection, computerSelection))
+    let winnerForEachRound = playRound(playerSelection, computerSelection);
+    if (oneWinner[winnerForEachRound]){
+        oneWinner[winnerForEachRound]++;
+    } else {
+        oneWinner[winnerForEachRound] = 1;
+    }
+    }
+delete oneWinner["tie"];
+let values = Object.values(oneWinner);
+let max = Math.max(...values);
+
+return oneWinner["player"] === oneWinner["computer"]
+    ? "tie"
+    : Object.keys(oneWinner).find((key) => oneWinner[key] === max);
 }
-return results;
-}
+
 
 console.log(game(playRound));

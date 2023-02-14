@@ -1,6 +1,5 @@
 function numberGenerator(max) {
     let num = Math.floor((Math.random() * max) + 1);
-    console.log(num)
     return num;
 };
 
@@ -13,9 +12,11 @@ if (randomNum === 3){
 } else if (randomNum === 1){
     return "scissors";
 }
-}
+};
 
-const playerSelection = window.prompt('choice: ').toLowerCase();
+const handleButtonClick = (event) => {
+  console.log(playRound(event.target.value, getComputerChoice()));
+}
 
 function playRound(playerSelection, computerSelection) {
 if (computerSelection === playerSelection){
@@ -39,30 +40,32 @@ if (computerSelection === playerSelection){
       return "player";
     }
 }
-}
+};
 
 // console.log(playRound(playerSelection, computerSelection));
 
 
-function game(playRound){
-let oneWinner = {};
-for (let i = 0 ; i < 5; i++){
-    let computerSelection = getComputerChoice();
-    let winnerForEachRound = playRound(playerSelection, computerSelection);
-    if (oneWinner[winnerForEachRound]){
-        oneWinner[winnerForEachRound]++;
-    } else {
-        oneWinner[winnerForEachRound] = 1;
-    }
-    }
-delete oneWinner["tie"];
-let values = Object.values(oneWinner);
-let max = Math.max(...values);
+// function game(playRound){
+// let oneWinner = {};
+// for (let i = 0 ; i < 5; i++){
+//     let computerSelection = getComputerChoice();
+//     let winnerForEachRound = playRound(playerSelection, computerSelection);
+//     if (oneWinner[winnerForEachRound]){
+//         oneWinner[winnerForEachRound]++;
+//     } else {
+//         oneWinner[winnerForEachRound] = 1;
+//     }
+//     }
+// delete oneWinner["tie"];
+// let values = Object.values(oneWinner);
+// let max = Math.max(...values);
 
-return oneWinner["player"] === oneWinner["computer"]
-    ? "tie"
-    : Object.keys(oneWinner).find((key) => oneWinner[key] === max);
-}
+// return oneWinner["player"] === oneWinner["computer"]
+//     ? "tie"
+//     : Object.keys(oneWinner).find((key) => oneWinner[key] === max);
+// }
 
+// create three buttons for rock, paper, scissors
+// add event listener to the buttons that call playRound
 
-console.log(game(playRound));
+// console.log(game(playRound));

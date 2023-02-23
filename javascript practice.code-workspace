@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../javascript practice"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "repos"
+	}
+}

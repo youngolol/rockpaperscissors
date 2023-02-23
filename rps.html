@@ -5,17 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="header">
-      PLAY ME
+    <div class="headermain">
+      Rock, Paper, Scissors
     </div>
     <div id="choices">
-      <button id="rock" value="rock" onclick="handleButtonClick(event)">Rock</button>
-      <button id="paper" value="paper" onclick="handleButtonClick(event)">Paper</button>
-      <button id="scissors" value="scissors" onclick="handleButtonClick(event)">Scissors</button>
+      <button class="game" id="rock" value="rock" onclick="handleButtonClick(event)">Rock</button>
+      <button class="game" id="paper" value="paper" onclick="handleButtonClick(event)">Paper</button>
+      <button class="game" id="scissors" value="scissors" onclick="handleButtonClick(event)">Scissors</button>
     </div>
+    <div class="board" id="score_board">
+      <h2 id="player_score">Player = 0</h2>
+      <h2 id="computer_score">Computer = 0</h2>
+      <h2 id="tie_score">Tie = 0</h2>
+    </div>
+    
     <script src="./rps.js">
 
     </script>

@@ -19,24 +19,29 @@ let computer_score = 0;
 let tie_score = 0;
 
 const handleButtonClick = (event) => {
-  let playRoundResult = playRound(event.target.value, getComputerChoice());
+  let computerSelection = getComputerChoice();
+  let playRoundResult = playRound(event.target.value, computerSelection);
   if (playRoundResult === "player") {
     player_score++;
     document.getElementById(
       "player_score"
-    ).innerText = `Player = ${player_score}`;
+    ).innerText = `Player ${player_score}`;
   } else if (playRoundResult === "computer") {
     computer_score++;
     document.getElementById(
       "computer_score"
-    ).innerText = `Computer = ${computer_score}`;
+    ).innerText = `Computer ${computer_score}`;
   } else if (playRoundResult === "tie") {
     tie_score++;
-    document.getElementById("tie_score").innerText = `Tie = ${tie_score}`;
+    document.getElementById("tie_score").innerText = `Tie ${tie_score}`;
   }
+  document.getElementById(
+    "result_player"
+  ).innerText = `Player: ${event.target.value}`;
+  document.getElementById(
+    "result_computer"
+  ).innerText = `Computer: ${computerSelection}`;
 };
-
-// initialize counter
 
 function playRound(playerSelection, computerSelection) {
   if (computerSelection === playerSelection) {
